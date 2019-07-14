@@ -40,4 +40,28 @@ class NrTextRecognitionTemplate extends Model
         'sort',
         'algo_rule '
     ];
+
+    /**
+     * 获取关联到多个框选字段
+     * @author 刘富胜
+     * @version 1.0.0
+     * @create_time 2019-7-14
+    */
+    public function relateTemplateField()
+    {
+        return $this->hasOne('App\Http\Models\NrRegionField', 'template_id', 'id');
+    }
+
+    /**
+     * 获取关联到多个框选识别区域
+     * @author 刘富胜
+     * @version 1.0.0
+     * @create_time 2019-7-14
+     */
+    public function relateTemplateRecognition()
+    {
+        return $this->hasOne('App\Http\Models\NrRegionRecognition', 'template_id', 'id');
+    }
+
+
 }

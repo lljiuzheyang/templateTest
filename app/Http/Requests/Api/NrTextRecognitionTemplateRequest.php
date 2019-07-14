@@ -55,5 +55,4 @@ class NrTextRecognitionTemplateRequest extends FormRequest
             'per_page.integer' => '条数必须为整数',
         ];
     }
-
 }

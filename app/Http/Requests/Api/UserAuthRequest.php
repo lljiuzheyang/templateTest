@@ -1,13 +1,10 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: jiuzheyang
- * Date: 2019/7/12
- * Time: 下午2:19
+
+/*
+ * What extreme-vision team is that is 'one thing, a team, work together'
  */
 
 namespace App\Http\Requests\Api;
-
 
 use Dingo\Api\Http\FormRequest;
 
@@ -41,10 +38,9 @@ class UserAuthRequest extends FormRequest
     {
         return [
             'username.required' => '用户名不能为空。',
-            'username.between' => '用户名必须介于 1 - 15 个字符之间。',
+            'username.between'  => '用户名必须介于 1 - 15 个字符之间。',
             'password.required' => '密码不能为空。',
-            'password.between' => '密码必须介于 8 - 20 个字符之间。',
+            'password.between'  => '密码必须介于 8 - 20 个字符之间。',
         ];
     }
-
 }

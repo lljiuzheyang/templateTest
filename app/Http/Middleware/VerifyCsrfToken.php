@@ -1,5 +1,9 @@
 <?php
 
+/*
+ * What extreme-vision team is that is 'one thing, a team, work together'
+ */
+
 namespace App\Http\Middleware;
 
 use Illuminate\Foundation\Http\Middleware\VerifyCsrfToken as Middleware;
@@ -19,6 +23,5 @@ class VerifyCsrfToken extends Middleware
      * @var array
      */
     protected $except = [
-        //
     ];
 }

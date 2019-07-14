@@ -1,9 +1,13 @@
 <?php
 
+/*
+ * What extreme-vision team is that is 'one thing, a team, work together'
+ */
+
 namespace App\Http\Middleware;
 
-use Illuminate\Http\Request;
 use Fideloper\Proxy\TrustProxies as Middleware;
+use Illuminate\Http\Request;
 
 class TrustProxies extends Middleware
 {

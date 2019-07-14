@@ -1,10 +1,13 @@
 <?php
 
+/*
+ * What extreme-vision team is that is 'one thing, a team, work together'
+ */
+
 namespace App;
 
-use Illuminate\Notifications\Notifiable;
-use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Notifications\Notifiable;
 
 class User extends Authenticatable
 {

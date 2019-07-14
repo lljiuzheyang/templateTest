@@ -1,13 +1,10 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: jiuzheyang
- * Date: 2019/7/14
- * Time: 上午10:56
+
+/*
+ * What extreme-vision team is that is 'one thing, a team, work together'
  */
 
 namespace App\Http\Repository\Api;
-
 
 use App\Http\Models\NrRegionField;
 use App\Http\Models\NrRegionRecognition;
@@ -22,7 +19,8 @@ class TemplateManagerRepository
     private $_nrRegionRecognition;
 
     /**
-     * 模版模型
+     * 模版模型.
+     *
      * @author 刘富胜
      * @create_time 2019-7-13
      */
@@ -30,38 +28,40 @@ class TemplateManagerRepository
         NrTextRecognitionTemplate $nrTextRecognitionTemplate,
         NrRegionField $nrRegionField,
         NrRegionRecognition $nrRegionRecognition
-    )
-    {
-        $this->_nrRegionField = $nrRegionField;
-        $this->_nrRegionRecognition = $nrRegionRecognition;
+    ) {
+        $this->_nrRegionField             = $nrRegionField;
+        $this->_nrRegionRecognition       = $nrRegionRecognition;
         $this->_nrTextRecognitionTemplate = $nrTextRecognitionTemplate;
     }
 
     /**
-     * 获取模型列表
+     * 获取模型列表.
+     *
      * @author 刘富胜
      * @create_time 2019-7-13
+     *
      * @param NrTextRecognitionTemplateRequest $params 参数
+     *
      * @return mixed
      */
     public function getTemplateList($params)
     {
-        $page = $params->page ?? 1;
+        $page  = $params->page     ?? 1;
         $limit = $params->per_page ?? 10;
         $where = [
-            ['is_delete', '=', 0]
+            ['is_delete', '=', 0],
         ];
         if (!empty($params->template_id)) {
             $where[] = ['id', '=', $params->template_id];
         }
         $query = $this->_nrTextRecognitionTemplate::query()
             ->select([
-                'id as template_id',//模版id
-                'last_update_time',//最近一次更新时间
-                'img_json',//图片json数据
-                'last_launch_time',//最近一次发布时间
-                'state',//状态
-                'version'//版本
+                'id as template_id', //模版id
+                'last_update_time', //最近一次更新时间
+                'img_json', //图片json数据
+                'last_launch_time', //最近一次发布时间
+                'state', //状态
+                'version', //版本
             ])->where($where);
 
         if (!empty($params->last_launch_time)) {
@@ -80,16 +80,19 @@ class TemplateManagerRepository
     }
 
     /**
-     * 获取模型总条数
+     * 获取模型总条数.
+     *
      * @author 刘富胜
      * @create_time 2019-7-13
+     *
      * @param NrTextRecognitionTemplateRequest $params 参数
+     *
      * @return int
      */
     public function getTemplateCount($params)
     {
         $where = [
-            ['is_delete', '=', 0]
+            ['is_delete', '=', 0],
         ];
         if (!empty($params->template_id)) {
             $where[] = ['id', '=', $params->template_id];
@@ -107,6 +110,4 @@ class TemplateManagerRepository
 
         return $count;
     }
-
-
 }

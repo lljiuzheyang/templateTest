@@ -1,20 +1,16 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: jiuzheyang
- * Date: 2019/7/13
- * Time: 上午8:57
+
+/*
+ * What extreme-vision team is that is 'one thing, a team, work together'
  */
 
 namespace App\Http\Controllers\Api;
 
-
 use App\Http\Requests\Api\NrTextRecognitionTemplateRequest;
 use App\Http\Service\Api\TemplateManagerService;
 
-class TemplateManagerController extends Controller
+class TemplateManagerController extends BaseController
 {
-
     private $_templateManagerService;
 
     public function __construct(TemplateManagerService $templateManagerService)
@@ -23,16 +19,16 @@ class TemplateManagerController extends Controller
     }
 
     /**
-     * 模型模版列表
-     * @author 刘富胜
-     * @version v1.0.0
-     * @param NrTextRecognitionTemplateRequest $request
+     * 模型模版列表.
      *
-    */
+     * @author 刘富胜
+     *
+     * @version v1.0.0
+     *
+     * @param NrTextRecognitionTemplateRequest $request
+     */
     public function list(NrTextRecognitionTemplateRequest $request)
     {
         return $this->_templateManagerService->getTemplateList($request);
     }
-
-
 }

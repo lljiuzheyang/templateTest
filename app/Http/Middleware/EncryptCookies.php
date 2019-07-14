@@ -1,5 +1,9 @@
 <?php
 
+/*
+ * What extreme-vision team is that is 'one thing, a team, work together'
+ */
+
 namespace App\Http\Middleware;
 
 use Illuminate\Cookie\Middleware\EncryptCookies as Middleware;
@@ -12,6 +16,5 @@ class EncryptCookies extends Middleware
      * @var array
      */
     protected $except = [
-        //
     ];
 }

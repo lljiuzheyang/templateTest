@@ -1,9 +1,7 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: jiuzheyang
- * Date: 2019/7/11
- * Time: 下午6:23
+
+/*
+ * What extreme-vision team is that is 'one thing, a team, work together'
  */
 
 namespace App\Http\Controllers\Api;
@@ -22,6 +20,7 @@ class UserController extends Controller
 
     /**
      * UserController constructor.
+     *
      * @param UserService $userService
      */
     public function __construct(UserService $userService)
@@ -30,10 +29,13 @@ class UserController extends Controller
     }
 
     /**
-     * 登录
+     * 登录.
+     *
      * @description 南瑞用户登录 用户名 密码
+     *
      * @author 刘富胜
      * @create_time 2019-7-12
+     *
      * @param UserAuthRequest $request username=>用户名，password=>密码
      */
     public function login(UserAuthRequest $request)
@@ -44,32 +46,38 @@ class UserController extends Controller
                 [], true);
         }
         $transformer = new UserTransformer();
-        $data = array_merge(
+        $data        = array_merge(
             $this->userService->respondWithToken($token),
             $transformer->transform($this->userService->getUserByAuthApi())
         );
+
         return ResultHelper::generate(ResultHelper::SUCCESS_CODE, '', $data, true);
     }
 
     /**
-     * 获取用户信息
+     * 获取用户信息.
+     *
      * @description 获取用户详情信息
+     *
      * @author 刘富胜
      * @create_time 2019-7-12
      */
     public function info()
     {
         $transformer = new UserTransformer();
-        $data = array_merge(
+        $data        = array_merge(
             $transformer->transform($this->userService->getUserByAuthApi()
             )
         );
+
         return ResultHelper::generate(ResultHelper::SUCCESS_CODE, '', $data, true);
     }
 
     /**
-     * 退出登录
+     * 退出登录.
+     *
      * @description 退出登录
+     *
      * @author 刘富胜
      * @create_time 2019-7-12
      */

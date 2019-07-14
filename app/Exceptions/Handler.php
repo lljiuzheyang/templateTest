@@ -1,19 +1,22 @@
 <?php
 
+/*
+ * What extreme-vision team is that is 'one thing, a team, work together'
+ */
+
 namespace App\Exceptions;
 
+use Dingo\Api\Exception\ResourceException;
+use Dingo\Api\Exception\ValidationHttpException;
+use Doctrine\DBAL\Driver\PDOException;
 use Exception;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
+use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 use Illuminate\Validation\UnauthorizedException;
 use Illuminate\Validation\ValidationException;
-use Dingo\Api\Exception\ValidationHttpException;
-use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Symfony\Component\HttpKernel\Exception\HttpException;
-use Symfony\Component\HttpKernel\Exception\UnauthorizedHttpException;
 use Symfony\Component\HttpKernel\Exception\MethodNotAllowedHttpException;
-use Dingo\Api\Exception\ResourceException;
-use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
-use Doctrine\DBAL\Driver\PDOException;
-
+use Symfony\Component\HttpKernel\Exception\UnauthorizedHttpException;
 
 class Handler extends ExceptionHandler
 {
@@ -23,7 +26,6 @@ class Handler extends ExceptionHandler
      * @var array
      */
     protected $dontReport = [
-        //
     ];
 
     /**
@@ -39,8 +41,7 @@ class Handler extends ExceptionHandler
     /**
      * Report or log an exception.
      *
-     * @param  \Exception  $exception
-     * @return void
+     * @param \Exception $exception
      */
     public function report(Exception $exception)
     {
@@ -77,9 +78,8 @@ class Handler extends ExceptionHandler
             if ($exception instanceof HttpException) {
                 if (preg_match("/[\x80-\xff]/", $exception->getMessage())) {
                     throw new HttpException($this->getErrorCode($exception), $exception->getMessage());
-                } else {
-                    throw new HttpException(500, '非法操作');
                 }
+                throw new HttpException(500, '非法操作');
             }
             // 数据库连接失败
             if ($exception instanceof PDOException) {
@@ -88,9 +88,8 @@ class Handler extends ExceptionHandler
             if ($exception instanceof Exception) {
                 if (preg_match("/[\x80-\xff]/", $exception->getMessage())) {
                     throw new HttpException($this->getErrorCode($exception), $exception->getMessage());
-                } else {
-                    throw new HttpException(500, '非法操作');
                 }
+                throw new HttpException(500, '非法操作');
             }
         }
         parent::report($exception);
@@ -99,8 +98,9 @@ class Handler extends ExceptionHandler
     /**
      * Render an exception into an HTTP response.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \Exception  $exception
+     * @param \Illuminate\Http\Request $request
+     * @param \Exception               $exception
+     *
      * @return \Illuminate\Http\Response
      */
     public function render($request, Exception $exception)

@@ -146,6 +146,8 @@ return [
         Illuminate\Translation\TranslationServiceProvider::class,
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
+        AlicFeng\Helper\ServiceProvider\HelperServiceProvider::class,
+        AlicFeng\Runtime\ServiceProvider\RuntimeServiceProvider::class,
 
         /*
          * Package Service Providers...

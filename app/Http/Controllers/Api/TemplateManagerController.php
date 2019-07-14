@@ -22,10 +22,11 @@ class TemplateManagerController extends Controller
         $this->_templateManagerService = $templateManagerService;
     }
 
-    /**t
+    /**
      * 模型模版列表
      * @author 刘富胜
      * @version v1.0.0
+     * @param NrTextRecognitionTemplateRequest $request
      *
     */
     public function list(NrTextRecognitionTemplateRequest $request)

@@ -52,7 +52,7 @@ class TemplateManagerRepository
             ['is_delete', '=', 0]
         ];
         if (!empty($params->template_id)) {
-            $where = ['id', '=', $params->template_id];
+            $where[] = ['id', '=', $params->template_id];
         }
         $query = $this->_nrTextRecognitionTemplate::query()
             ->select([
@@ -92,7 +92,7 @@ class TemplateManagerRepository
             ['is_delete', '=', 0]
         ];
         if (!empty($params->template_id)) {
-            $where = ['id', '=', $params->template_id];
+            $where[] = ['id', '=', $params->template_id];
         }
         $query = $this->_nrTextRecognitionTemplate::query()->where($where);
 
